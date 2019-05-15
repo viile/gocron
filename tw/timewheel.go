@@ -111,7 +111,6 @@ func (tw *timeWheel) addTask(task *task) {
 
 	//record the task
 	tw.taskRecord.Store(task.key, task)
-	//log.Println(task)
 }
 
 // scan task list and run the task
@@ -153,7 +152,5 @@ func (tw *timeWheel) getPositionAndCircle(d time.Duration) (pos int, circle int)
 
 	circle = int(delaySeconds / intervalSeconds / tw.slotNum)
 	pos = int(tw.currentPos+delaySeconds/intervalSeconds) % tw.slotNum
-
-	//log.Println(delaySeconds,intervalSeconds,pos,circle)
 	return
 }
